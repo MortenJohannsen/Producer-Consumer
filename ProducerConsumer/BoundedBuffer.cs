@@ -46,7 +46,7 @@ namespace ProducerConsumer
                 }
 
                 int temp = this._q.Dequeue();
-                Console.WriteLine("int taken from queue: " + temp);
+                Console.WriteLine("int taken from queue: " + temp + " - From thread: " + Thread.CurrentThread.ManagedThreadId);
                 Monitor.PulseAll(this._q);
                 return temp;
             }

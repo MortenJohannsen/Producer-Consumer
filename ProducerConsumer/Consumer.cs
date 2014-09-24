@@ -11,20 +11,20 @@ namespace ProducerConsumer
         private BoundedBuffer buffer;
         private int _max;
 
-        public Consumer(BoundedBuffer buf, int howMany)
+        public Consumer(BoundedBuffer buf)
         {
             this.buffer = buf;
-            this._max = howMany;
         }
 
         public void Run()
         {
-            for (int i = 0; i < this._max; i++)
-            {
-                    int temp = this.buffer.Take();
-                    
-            }
             
+            int temp = this.buffer.Take();
+            while (temp != -1)
+            {
+                temp = this.buffer.Take();
+            }
+
         }
 
     }//End of class

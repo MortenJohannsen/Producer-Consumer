@@ -13,9 +13,10 @@ namespace ProducerConsumer
             BoundedBuffer buf = new BoundedBuffer(4);
 
             Producer prod = new Producer(buf, 10);
-            Consumer con = new Consumer(buf, 10);
+            Consumer con = new Consumer(buf);
+            Consumer con2 = new Consumer(buf);
 
-            Parallel.Invoke(prod.Run, con.Run);
+            Parallel.Invoke(prod.Run, con.Run, con2.Run);
 
 
             Console.WriteLine("--- Done ---");

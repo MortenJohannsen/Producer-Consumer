@@ -22,6 +22,7 @@ namespace ProducerConsumer
                     this._buffer.Put(i);
                     
             }
+            this._buffer.Put(-1);
         }
     }//End of class
 }//End of namespace

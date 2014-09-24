@@ -18,13 +18,17 @@ namespace ProducerConsumer
 
         public void Run()
         {
-            
-            int temp = this.buffer.Take();
-            while (temp != -1)
+            //int temp = this.buffer.Take();
+            //while (temp != -1)
+            //{
+            //    temp = this.buffer.Take();
+            //}
+
+            int temp;
+            do
             {
                 temp = this.buffer.Take();
-            }
-
+            } while (temp != -1);
         }
 
     }//End of class

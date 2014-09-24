@@ -21,13 +21,16 @@ namespace ProducerConsumer
         {
             lock (this._q)
             {
-                if (!this.IsFull())
+                while (this.IsFull())
                 {
+                    Monitor.Wait(this._q);
+                }
+               
                     // Insert the element into the queue
                     this._q.Enqueue(element);
                     Console.WriteLine("int added to queue: " + element);
                     Monitor.PulseAll(this._q);
-                }
+                
             }
 
         }
@@ -44,6 +47,7 @@ namespace ProducerConsumer
 
                 int temp = this._q.Dequeue();
                 Console.WriteLine("int taken from queue: " + temp);
+                Monitor.PulseAll(this._q);
                 return temp;
             }
   
